@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/repertoire.css">
+    <title>Répertoire des contacts</title>
+</head>
+<body>
+
+    <div id="contact">
+        <div id="entetecontact"><h1>Répertoire de contact</h1></div>
+        <div id="corpContact">
+            <div class="element">
+                <div id="enteteFormContact">
+                    <h2>Formulaire de contact</h2>
+                </div>
+                <div id="corpFormContact">
+                    <form id="formulaire" action="#" method="post">
+                        <div class="champ">
+                            <label>Prénom</label>
+                            <input type="text" name="prenom" id="prenom" class="inputStyle">
+                        </div>
+                        <div class="champ">
+                            <label>Nom</label>
+                            <input type="text" name="nom" id="nom" class="inputStyle">
+                        </div>
+                        <div class="champ">
+                            <label>Groupe</label>
+                            <select name="groupe" id="groupe" class="inputStyle">
+                                <option value="none" disabled>Sélectionner un groupe</option>
+                                <option value=""></option>
+                                <option value="Famille">Famille</option>
+                                <option value="Ami(e)">Amis</option>
+                            </select>
+                        </div>
+                        <div class="champ" >
+                            <label>Bio</label>
+                            <textarea name="biographie" id="biographie" cols="15" rows="2" class="inputStyle"></textarea>
+                        </div>
+                        <div class="avatar">
+                            <label id="choisirFichier" for="photo">Choisir un fichier</label>
+                            <input hidden type="file" name="photo" accept="image/*" id="photo">
+                          
+                            <img src="/img/avatar.png" alt="profil" id="photoProfil">
+                        </div>
+
+                        <div class="boutons">
+                         
+                            <button type="submit" id="creerContact">Créer</button>
+                            <button type="reset">Réinit.</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="element">
+                <did id="eteteListContact">
+                    <h2>Liste de contact</h2>
+                </did>
+                <div id="corpListContact">              
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/repertoire.js"></script>
+</body>
+</html>
