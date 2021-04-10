@@ -15,8 +15,9 @@ const filePhoto=document.getElementById("photo")
 //Réinitialisation de l'image
 const reinit=document.querySelector(".boutons > button[type='reset']")
 reinit.addEventListener('click',(e)=>{
-    const resetFile=document.getElementById("photo")
-    const reset=document.getElementById("photoProfil")
+    const resetFile = document.getElementById("photo")
+    const reset = document.getElementById("photoProfil")
+    const textgroupe = document.getElementById("groupe")
     reset.src="/img/avatar.png"
 })
 
