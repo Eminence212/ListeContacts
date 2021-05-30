@@ -13,8 +13,8 @@ const filePhoto=document.getElementById("photo")
 });
 
 //Réinitialisation de l'image
-const reinit=document.querySelector(".boutons > button[type='reset']")
-reinit.addEventListener('click',(e)=>{
+const resetForm=document.querySelector(".boutons > button[type='reset']")
+resetForm.addEventListener('click',(e)=>{
     const resetFile = document.getElementById("photo")
     const reset = document.getElementById("photoProfil")
     const textgroupe = document.getElementById("groupe")
@@ -74,41 +74,48 @@ btnCreer.addEventListener('click',(e)=>{
     let textBio = document.getElementById('biographie')
     let lienPhoto = document.getElementById('photo')
     
-    if(lienPhoto.files && lienPhoto.files[0] &&
-        textPrenom.value && textPrenom != "" &&
-        textNom.value && textNom != "" &&
-        textGroupe.value && textGroupe != "" &&
-        textBio.value && textBio !=""){
+    if (
+      lienPhoto.files &&
+      lienPhoto.files[0] &&
+      textPrenom.value &&
+      textPrenom != "" &&
+      textNom.value &&
+      textNom != "" &&
+      textGroupe.value &&
+      textGroupe != "" &&
+      textGroupe.value != "none" &&
+      textBio.value &&
+      textBio != ""
+    ) {
+      lienPhoto = URL.createObjectURL(lienPhoto.files[0]);
+      textPrenom = textPrenom.value;
+      textNom = textNom.value;
+      textGroupe = textGroupe.value;
+      textBio = textBio.value;
 
-        lienPhoto = URL.createObjectURL(lienPhoto.files[0])
-        textPrenom=textPrenom.value
-        textNom=textNom.value
-        textGroupe=textGroupe.value
-        textBio=textBio.value
-        
-        let contactObjet={
-            prenom : textPrenom,
-            nom : textNom,
-            groupe : textGroupe,
-            bio : textBio,
-            photo : lienPhoto
-        } 
-        //Création du contact
-    tabContacts.push(contactObjet)
-    addEvenCross(createContact(contactObjet))
-    }else{
-       alert('Entrez tous les éléments')
-    }
- 
-  
-  
-    
-   
+      let contactObjet = {
+        prenom: textPrenom,
+        nom: textNom,
+        groupe: textGroupe,
+        bio: textBio,
+        photo: lienPhoto,
+      };
+      //Création du contact
+      tabContacts.push(contactObjet);
+      addDeleteEvent(createContact(contactObjet));
+    } else {
+        if (textGroupe.value == "none") {
+          alert("Sélectionnez un groupe");
+        }
+        else {
+            alert("Entrez tous les éléments");
+        }
+    } 
 })
 
 //Suppression des contacts
 
-let addEvenCross = (element)=>{
+let addDeleteEvent = (element)=>{
     let repertoie = document.getElementById('corpListContact')
     for (let i = 0; i < element.length; i++) {
         element[i].addEventListener('click',(e) =>{
